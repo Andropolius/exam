@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ItDelight exam</title>
+<body>
+<main>
+    <h1 style="text-align: center;">ItDelight exam</h1>
+    <p>Use your browser console to check available functions:</p>
+    <p>repeat([1,4,3]);</p>
+    <p>reformat("baeMEir DeveLoper TEST");</p>
+    <p>next_binary_number([1,0]);</p>
+</main>
+    <script>
+        // Task 1:
+        function repeat(arr) {
+            let numbers = [];
+
+            for (let i = 0; i < 3; i++) {
+                for (let j = 0; j < arr.length; j++) {
+                    numbers.push(arr[j])
+                }
+            }
+
+            return numbers;
+        }
+        // repeat([1,4,3]);
+
+        // Task 2:
+        function reformat(text) {
+            let vowlsReg = /[aeiou]/gi;
+
+            function refactoredText(text) {
+                let textWithoutVowels = text.replace(vowlsReg, '');
+
+                return textWithoutVowels.charAt(0).toUpperCase() + textWithoutVowels.slice(1).toLowerCase();
+            }
+
+            return refactoredText(text);
+        }
+
+        // reformat("baeMEir DeveLoper TEST");
+
+        // Task 3:
+        function next_binary_number(arr) {
+            let
+                next = [],
+                memory = 1;
+
+            for (let i = arr.length - 1; i >= 0; i--) {
+                switch (arr[i] + memory) {
+                    case 0:
+                        next.unshift(0);
+                        memory = 0;
+                        break;
+                    case 1:
+                        next.unshift(1);
+                        memory = 0;
+                        break;
+                    case 2:
+                        next.unshift(0);
+                        memory = 1;
+                        break;
+                    case 3:
+                        next.unshift(1);
+                        memory = 1;
+                }
+            }
+
+            if (memory > 0) {
+                next.unshift(1);
+            }
+
+            return next;
+        }
+
+        // next_binary_number([1,0,0,0,0,0,0,0,0,1]);
+    </script>
+</body>
+</html>
